@@ -1,0 +1,40 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Essay Assessments</title>
+  </head>
+
+  <body>
+    
+    <div id="message"></div>
+    
+    <h2>Add Question:</h2>
+    <form action="/questions" method="POST">
+      <input type="text" placeholder="Question" name="question" />
+      <button type="submit">Submit</button>
+    </form>    
+    <hr/>
+
+    <%if (questions.length > 0) { %>
+    <h2>Added Questions:</h2>
+    <table class="questions" border="1">
+      <tr>
+        <th>Question</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      <% for(var i = 0; i < questions.length; i++) {%>
+        <tr class="question" id="<%= questions[i]._id %>">
+          <td><input id="question-<%= questions[i]._id %>" type="text" value="<%= questions[i].question %>" /></td>
+          <td><button class="update-question">Update</button></td>
+          <td><button class="delete-question">Delete</button></td>
+        </tr>
+      <% } %>
+    </table>
+    <% } %>
+
+    <script src="/main.js"></script>
+  </body>
+</html>

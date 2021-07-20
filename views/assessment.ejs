@@ -1,0 +1,27 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Essay Assessments</title>
+  </head>
+
+  <body>
+    
+    <div id="message"></div>
+    
+    <h2>Assessment:</h2>
+    <form action="/assessment/<%= assessment._id %>" method="POST">
+      <b>Question: <%= assessment.questions[0].question %></b><br/><br/>
+      <textarea type="text" placeholder="Write Answer" name="answers[0]"></textarea><br/><br/>
+      <button type="submit">Submit</button>
+    </form>    
+    <hr/>
+
+    <%if (typeof assessment.answers != "undefined" && assessment.answers.length > 0) { %>
+      <b>Submitted answer:</b><br/>
+      <i><%= assessment.answers[0] %></i>
+    <% } %>
+    <script src="/main.js"></script>
+  </body>
+</html>

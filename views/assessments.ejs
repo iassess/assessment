@@ -1,0 +1,45 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Essay Assessments</title>
+  </head>
+
+  <body>
+    
+    <div id="message"></div>
+    
+    <h2>Request Assessment:</h2>
+    <form action="/assessments" method="POST">
+      <input type="text" placeholder="Candidate Email" name="candidate_email" />
+      <input type="text" placeholder="Creator Email" name="creator_email" />
+      <button type="submit">Submit</button>
+    </form>    
+    <hr/>
+
+    <%if (assessments.length > 0) { %>
+    <h2>Requested assessments:</h2>
+    <table class="assessments" border="1">
+      <tr>
+        <th>Candidate Email</th>
+        <th>Creator Email</th>
+        <th>Question</th>
+        <th>View</th>
+        <th>Delete</th>
+      </tr>
+      <% for(var i = 0; i < assessments.length; i++) {%>
+        <tr class="assessment" id="<%= assessments[i]._id %>">
+          <td><%= assessments[i].candidate_email %></td>
+          <td><%= assessments[i].creator_email %></td>
+          <%if (typeof assessments[i].questions[0] != "undefined") { %><td><%= assessments[i].questions[0].question %></td><% } else { %><td></td><% } %>
+          <td><button class="view-assessment" onclick="window.location.href = '/assessment/<%= assessments[i]._id %>'">View</button></td>
+          <td><button class="delete-assessment">Delete</button></td>
+        </tr>
+      <% } %>
+    </table>
+    <% } %>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
