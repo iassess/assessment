@@ -6,7 +6,7 @@ const app = express()
 const MongoClient = require('mongodb').MongoClient
 const {ObjectId} = require('mongodb')
 
-MongoClient.connect('mongodb+srv://root:root@cluster0.rdhhk.mongodb.net/EADatabase?retryWrites=true&w=majority', { useUnifiedTopology: true })
+MongoClient.connect('mongodb+srv://root:root@cluster0.i7hx1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
     const db = client.db('EADatabase')
